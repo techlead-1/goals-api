@@ -3,7 +3,7 @@ import express from 'express';
 const app = express();
 
 app.get('/', (req, res) => {
-    res.render('Welcome to the goals API')
+    res.send('Welcome to the goals API')
 })
 
 app.listen(3000, () => {
