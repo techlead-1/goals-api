@@ -37,7 +37,7 @@ export const signUp = async (req, res, next) => {
             message: 'User created successfully.',
             data: {
                 token: token,
-                user: users[0],
+                user: users[0].select('-password'),
             }
         })
     } catch (e) {
@@ -51,7 +51,7 @@ export const signIn = async (req, res, next) => {
     try {
         let { email, password } = req.body
 
-        let user = await User.findOne({email})
+        let user = await User.findOne({email}).select('+password')
 
         if (!user) {
             let error = new Error('User does not exist')
@@ -68,6 +68,9 @@ export const signIn = async (req, res, next) => {
 
         let token = jwt.sign({userID: user._id}, JWT_SECRET, {expiresIn: JWT_EXPIRE_IN})
 
+        user = user.toObject();
+        delete user.password;
+
         res.status(200).json({
             success: true,
             message: 'User logged in successfully.',
@@ -82,5 +85,5 @@ export const signIn = async (req, res, next) => {
 }
 
 export const signOut = async (req, res, next) => {
-
+    res.status(200).json({ message: 'User logged out successfully.' })
 }
