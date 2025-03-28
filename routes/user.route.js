@@ -1,13 +1,10 @@
 import express from "express";
+import {getProfile, updateProfile} from "../controllers/user.controller.js";
 
 const userRouter = express.Router()
 
-userRouter.get('/me', async (req, res) => {
-    res.send('My profile')
-})
+userRouter.get('/me', getProfile);
 
-userRouter.put('/me', async (req, res) => {
-    res.send('Update profile')
-})
+userRouter.put('/me', updateProfile);
 
 export default userRouter;

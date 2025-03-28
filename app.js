@@ -7,6 +7,7 @@ import authRouter from "./routes/auth.route.js";
 import userRouter from "./routes/user.route.js";
 import goalRouter from "./routes/goal.route.js";
 import milestoneRouter from "./routes/milestone.route.js";
+import authMiddleware from "./middlewares/auth.middleware.js";
 
 const app = express();
 
@@ -16,9 +17,9 @@ app.use(cookieParser());
 app.use(errorMiddleware);
 
 app.use('/api/v1/auth', authRouter);
-app.use('api/v1/users', userRouter);
-app.use('/api/v1/goals', goalRouter);
-app.use('/api/v1/goals', milestoneRouter);
+app.use('/api/v1/users', authMiddleware, userRouter);
+app.use('/api/v1/goals', authMiddleware, goalRouter);
+app.use('/api/v1/goals', authMiddleware, milestoneRouter);
 
 app.get('/', (req, res) => {
     res.send('Welcome to the goals API')
