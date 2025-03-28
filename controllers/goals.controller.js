@@ -79,3 +79,43 @@ export const getGoal  = async (req, res, next) => {
         next(e)
     }
 }
+
+export const updateGoal = async (req, res, next) => {
+    try {
+        let allowedFields = [ 'name', 'description', 'category', 'start_date', 'end_date', 'status' ]
+
+        let goalData = {}
+        for (let key of allowedFields) {
+            if (req.body[key] !== undefined) {
+                goalData[key] = req.body[key];
+            }
+        }
+
+        let goal = await Goal.findById(req.params.id)
+
+        if (!goal) {
+            let error = new Error('Goal not found');
+            error.status = 404;
+            throw error;
+        }
+
+        if (goal.userID.toString()  !== req.user._id.toString()) {
+            let error = new Error('Goal does not belong to this user');
+            error.status = 401;
+            throw error;
+        }
+
+        Object.assign(goal, goalData);
+        await goal.save()
+
+        res.status(200).json({
+            success: true,
+            message: 'Updated goal successfully.',
+            data: {
+                goal: goal
+            }
+        })
+    } catch (e) {
+        next(e)
+    }
+}
