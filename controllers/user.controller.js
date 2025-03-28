@@ -1,11 +1,5 @@
 export const getProfile = async (req, res, next) => {
     try {
-        if (!req.user) {
-            let error = new Error('User Not Found');
-            error.status = 404;
-            throw error
-        }
-
         const user = req.user;
         res.status(200).json({
             success: true,
@@ -21,7 +15,20 @@ export const getProfile = async (req, res, next) => {
 
 export const updateProfile = async (req, res, next) => {
     try {
+        let user = req.user;
+        const { name, profession } = req.body;
 
+        if (name) user.name = name;
+        if (profession) user.profession = profession;
+        await user.save()
+
+        res.status(200).json({
+            success: true,
+            message: 'Profile Updated Successfully',
+            data: {
+                user: user
+            }
+        })
     } catch (e) {
         next(e);
     }
