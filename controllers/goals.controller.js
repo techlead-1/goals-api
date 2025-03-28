@@ -62,6 +62,12 @@ export const getGoal  = async (req, res, next) => {
             throw error;
         }
 
+        if (goal.userID.equals(req.user._id)) {
+            let error = new Error('Goal does not belong to this user');
+            error.status = 401;
+            throw error;
+        }
+
         res.status(200).json({
             success: true,
             message: 'Fetched goal successfully.',

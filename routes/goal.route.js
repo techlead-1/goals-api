@@ -1,17 +1,13 @@
 import express from 'express';
-import {createGoal} from "../controllers/goals.controller.js";
+import {createGoal, getGoal, getGoals} from "../controllers/goals.controller.js";
 
 const goalRouter = express.Router();
 
 goalRouter.post('/', createGoal);
 
-goalRouter.get('/', (req, res) => {
-    res.send('Get goals');
-})
+goalRouter.get('/', getGoals);
 
-goalRouter.get('/:id', (req, res) => {
-    res.send('Get goal');
-})
+goalRouter.get('/:id', getGoal);
 
 goalRouter.put('/:id', (req, res) => {
     res.send('Update goal');
