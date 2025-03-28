@@ -23,6 +23,8 @@ app.use('/api/v1/users', authMiddleware, userRouter);
 app.use('/api/v1/goals', authMiddleware, goalRouter);
 app.use('/api/v1/goals', authMiddleware, milestoneRouter);
 
+app.set('trust proxy', true);
+
 app.get('/', (req, res) => {
     res.send('Welcome to the goals API')
 })
