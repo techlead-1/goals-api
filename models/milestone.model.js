@@ -23,8 +23,13 @@ const milestoneSchema = new mongoose.Schema({
         ref: 'Goal',
         required: [true, 'Goal is required'],
         index: true,
+    },
+    userID: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: [true, 'User is required'],
     }
-})
+}, { timestamps: true });
 
 const Milestone = mongoose.model('Milestone', milestoneSchema)
 

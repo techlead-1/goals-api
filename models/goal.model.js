@@ -55,8 +55,13 @@ const goalSchema = new mongoose.Schema({
         enum: ['in-progress', 'done', 'failed', 'archived'],
         default: 'in-progress',
         required: [true, 'Status is required'],
+    },
+    userID: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: [true, 'User is required'],
     }
-})
+}, { timestamps: true });
 
 const Goal = mongoose.model('Goal', goalSchema)
 
