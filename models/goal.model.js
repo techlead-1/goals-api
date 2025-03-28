@@ -18,12 +18,34 @@ const goalSchema = new mongoose.Schema({
     },
     start_date: {
         type: Date,
+        validate: {
+            validator: function (value) {
+                if (value && !this.end_date) {
+                    return true
+                }
+
+                if (value > this.end_date) {
+                    return false
+                }
+
+                return true
+            },
+            message: 'Start date must be lesser than end date'
+        }
     },
     end_date: {
         type: Date,
         validate: {
             validator: function (v) {
-                return this.start_date && this.start_date < v
+                if (v && !this.start_date) {
+                    return false;
+                }
+
+                if (this.start_date > v) {
+                    return false;
+                }
+
+                return true;
             },
             message: 'End date must be greater than start date'
         },

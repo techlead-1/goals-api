@@ -18,8 +18,8 @@ app.use(errorMiddleware);
 
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/users', authMiddleware, userRouter);
-app.use('/api/v1/goals', goalRouter);
-app.use('/api/v1/goals', milestoneRouter);
+app.use('/api/v1/goals', authMiddleware, goalRouter);
+app.use('/api/v1/goals', authMiddleware, milestoneRouter);
 
 app.get('/', (req, res) => {
     res.send('Welcome to the goals API')

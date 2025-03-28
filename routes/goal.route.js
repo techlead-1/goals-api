@@ -1,10 +1,9 @@
 import express from 'express';
+import {createGoal} from "../controllers/goals.controller.js";
 
 const goalRouter = express.Router();
 
-goalRouter.post('/', (req, res) => {
-    res.send('Create new goal');
-});
+goalRouter.post('/', createGoal);
 
 goalRouter.get('/', (req, res) => {
     res.send('Get goals');
