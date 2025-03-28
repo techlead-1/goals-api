@@ -1,9 +1,9 @@
 import arcjet, { shield, detectBot, tokenBucket } from "@arcjet/node";
-import {ARCJET_KEY, ARCJET_ENVIRONMENT} from "./env.js";
+import {ARCJET_KEY, ARCJET_ENV} from "./env.js";
 
 const aj = arcjet({
     key: ARCJET_KEY,
-    env: ARCJET_ENVIRONMENT || "development",
+    env: ARCJET_ENV || "development",
     characteristics: ["ip.src"],
     rules: [
         shield({ mode: "LIVE" }),
