@@ -18,7 +18,7 @@ const milestoneSchema = new mongoose.Schema({
         default: 'in-progress',
         enum: ['in-progress', 'done', 'failed', 'archived'],
     },
-    goal_id: {
+    goalID: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Goal',
         required: [true, 'Goal is required'],

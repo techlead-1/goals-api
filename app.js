@@ -8,6 +8,7 @@ import userRouter from "./routes/user.route.js";
 import goalRouter from "./routes/goal.route.js";
 import milestoneRouter from "./routes/milestone.route.js";
 import authMiddleware from "./middlewares/auth.middleware.js";
+import arcjetMiddleware from "./middlewares/arcjet.middleware.js";
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(errorMiddleware);
+app.use(arcjetMiddleware)
 
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/users', authMiddleware, userRouter);

@@ -1,25 +1,22 @@
 import express from 'express';
+import {
+    createMilestone,
+    deleteMilestone,
+    getMilestone,
+    getMilestones,
+    updateMilestones
+} from "../controllers/milestone.controller.js";
 
 const milestoneRouter = express.Router();
 
-milestoneRouter.post('/:id/milestones', async (req, res) => {
-    res.send('Creat goal milestones');
-})
+milestoneRouter.post('/:id/milestones', createMilestone);
 
-milestoneRouter.get('/:id/milestones', async (req, res) => {
-    res.send('Get goal milestones');
-})
+milestoneRouter.get('/:id/milestones', getMilestones);
 
-milestoneRouter.get('/milestones/:id', async (req, res) => {
-    res.send('Get goal milestone');
-})
+milestoneRouter.get('/milestones/:id', getMilestone);
 
-milestoneRouter.put('/milestones/:id', async (req, res) => {
-    res.send('Update goal milestone');
-})
+milestoneRouter.put('/milestones/:id', updateMilestones)
 
-milestoneRouter.delete('/milestones/:id', async (req, res) => {
-    res.send('Delete goal milestone');
-})
+milestoneRouter.delete('/milestones/:id', deleteMilestone);
 
 export default milestoneRouter;
