@@ -1,10 +1,9 @@
 import express from 'express';
+import {createMilestone} from "../controllers/milestone.controller.js";
 
 const milestoneRouter = express.Router();
 
-milestoneRouter.post('/:id/milestones', async (req, res) => {
-    res.send('Creat goal milestones');
-})
+milestoneRouter.post('/:id/milestones', createMilestone);
 
 milestoneRouter.get('/:id/milestones', async (req, res) => {
     res.send('Get goal milestones');
