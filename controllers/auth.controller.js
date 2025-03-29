@@ -14,7 +14,7 @@ export const signUp = async (req, res, next) => {
         const user = await User.findOne({email})
         if (user) {
             let error = new Error('User already exists')
-            error.status = 409
+            error.statusCode = 409
             throw error
         }
 
@@ -55,14 +55,14 @@ export const signIn = async (req, res, next) => {
 
         if (!user) {
             let error = new Error('User does not exist')
-            error.status = 404
+            error.statusCode = 404
             throw error
         }
 
         let correctPassword = await bcrypt.compare(password, user.password)
         if (!correctPassword) {
             let error = new Error('Incorrect password')
-            error.status = 401
+            error.statusCode = 401
             throw error
         }
 

@@ -58,13 +58,13 @@ export const getGoal  = async (req, res, next) => {
 
         if (!goal) {
             let error = new Error('Goal not found');
-            error.status = 404;
+            error.statusCode = 404;
             throw error;
         }
 
         if (goal.userID.toString()  !== req.user._id.toString()) {
             let error = new Error('Goal does not belong to this user');
-            error.status = 401;
+            error.statusCode = 401;
             throw error;
         }
 
@@ -95,13 +95,13 @@ export const updateGoal = async (req, res, next) => {
 
         if (!goal) {
             let error = new Error('Goal not found');
-            error.status = 404;
+            error.statusCode = 404;
             throw error;
         }
 
         if (goal.userID.toString()  !== req.user._id.toString()) {
             let error = new Error('Goal does not belong to this user');
-            error.status = 401;
+            error.statusCode = 401;
             throw error;
         }
 
@@ -125,13 +125,13 @@ export const deleteGoal = async (req, res, next) => {
         let goal = await Goal.findById(req.params.id)
         if (!goal) {
             let error = new Error('Goal not found');
-            error.status = 404;
+            error.statusCode = 404;
             throw error;
         }
 
         if (goal.userID.toString()  !== req.user._id.toString()) {
             let error = new Error('Goal does not belong to this user');
-            error.status = 401;
+            error.statusCode = 401;
             throw error;
         }
 
