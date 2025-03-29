@@ -15,7 +15,6 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(errorMiddleware);
 app.use(arcjetMiddleware)
 
 app.use('/api/v1/auth', authRouter);
@@ -28,6 +27,15 @@ app.set('trust proxy', true);
 app.get('/', (req, res) => {
     res.send('Welcome to the goals API')
 })
+
+app.use((req, res, next) => {
+    const error = new Error(`Not Found - ${req.originalUrl}`);
+    error.statusCode = 404;
+    next(error);
+});
+
+// Error Middleware
+app.use(errorMiddleware);
 
 app.listen(PORT, async () => {
     console.log(`Server started on localhost:${PORT}`);

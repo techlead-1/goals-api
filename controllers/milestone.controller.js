@@ -58,7 +58,7 @@ export const getMilestone = async (req, res, next) => {
         let milestone = await Milestone.findOne({userID: req.user._id, _id: req.params.id})
         if (!milestone) {
             let error = new Error('Milestone not found');
-            error.status = 404;
+            error.statusCode = 404;
             throw error;
         }
 
@@ -89,7 +89,7 @@ export const updateMilestones = async (req, res, next) => {
 
         if (!milestone) {
             let error = new Error('Milestone not found');
-            error.status = 404;
+            error.statusCode = 404;
             throw error;
         }
 
@@ -113,7 +113,7 @@ export const deleteMilestone = async (req, res, next) => {
         let milestone = await Milestone.findOne({_id: req.params.id, userID: req.user._id})
         if (!milestone) {
             let error = new Error('Milestone not found');
-            error.status = 404;
+            error.statusCode = 404;
             throw error;
         }
 
