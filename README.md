@@ -63,3 +63,76 @@ Designed to be lightweight yet extensible — a solid foundation for real-world 
 This API is live and stable. Ready for integration, testing, or further extension.
 
 ---
+
+
+## 🔐 Authentication
+
+### Sign Up  
+**Endpoint:** `POST /api/v1/auth/sign-up`  
+**Description:** Creates a new user account.
+
+#### Request Body
+
+```json
+{
+  "name": "Jane Doe",
+  "email": "jane@example.com",
+  "password": "securePassword123",
+  "profession": "Software Engineer" // optional
+}
+```
+
+#### Response Body 
+
+```json
+{
+  "token": "jwt_token",
+  "user": {
+            "id": "user_id",
+            "name": "Jane Doe",
+            "email": "jane@example.com",
+            "profession": "Software Engineer"
+          }
+}
+```
+
+### Sign In  
+**Endpoint:** `PUT /api/v1/auth/sign-in`  
+**Description:** Authenticates a user and returns a JWT token.
+
+#### Request Body
+
+```json
+{
+  "email": "jane@example.com",
+  "password": "securePassword123"
+}
+```
+
+#### Response Body
+
+```json
+{
+  "token": "jwt_token",
+  "user": {
+            "id": "user_id",
+            "name": "Jane Doe",
+            "email": "jane@example.com",
+            "profession": "Software Engineer"
+          }
+}
+```
+### Sign Out  
+**Endpoint:** `DELETE /api/v1/auth/sign-out`  
+**Description:** Logs the user out by invalidating the current session.  
+
+🔒 **Protected Route** — Requires a valid JWT token in the request header.
+
+#### 🧾 Headers
+**Authorization: Bearer**
+
+#### Response
+```
+  status: 200,
+  message: "User logged out successfully."
+```
