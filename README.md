@@ -100,7 +100,7 @@ This API is live and stable. Ready for integration, testing, or further extensio
 
 ### Sign In  
 
-**Endpoint:** `PUT /api/v1/auth/sign-in`  
+**Endpoint:** `POST /api/v1/auth/sign-in`  
 **Description:** Authenticates a user and returns a JWT token.
 
 #### Request Body
