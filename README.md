@@ -318,4 +318,145 @@ This API is live and stable. Ready for integration, testing, or further extensio
   message: "Deleted goal successfully."
 ```
 
+## 🎉 Milestones
+
+---
+
+### Create Goal Milestone
+**Endpoint:** `POST /api/v1/goals/:goal_id/milestones`  
+**Description:** Creates milestone for a user goal.  
+
+🔒 **Protected Route** — Requires a valid JWT token in the request header.
+
+#### Request Body
+```json
+  {
+    "name": "Join Gym", // Required, trimmed string
+    "description": "Sign up for gym membership and trainer at a close gym", // Optional, trimmed string
+    "status": "in-progress", // Required, must be one of ['in-progress', 'done', 'failed', 'archived'], default = 'in-progress'
+  }
+```
+
+#### Response Body
+```json
+ {
+   "milestone": {
+                  "_id": "milestone_id",
+                  "name": "Join Gym", 
+                  "description": "Sign up for gym membership and trainer at a close gym", 
+                  "status": "in-progress",
+                  "userID": "user_id",
+                  "goalID": "goal_id"
+                }
+}
+```
+
+
+### Get All Goal Milestones
+**Endpoint:** `GET /api/v1/goals/:goal_id/milestones`  
+**Description:** Get all milestones of a specific goal, return an array of JSON.  
+
+🔒 **Protected Route** — Requires a valid JWT token in the request header.
+
+#### Response Body
+```json
+ {
+   "milestones": [
+              {
+                "_id": "milestone_id",
+                "name": "Join Gym", 
+                "description": "Sign up for gym membership and trainer at a close gym", 
+                "status": "in-progress",
+                "userID": "user_id",
+                "goalID": "goal_id"
+              }
+            ]
+}
+```
+
+
+### Get Specific Milestone
+**Endpoint:** `GET /api/v1/goals/milestones/:milestone_id`  
+**Description:** Get a specific milestone.  
+
+🔒 **Protected Route** — Requires a valid JWT token in the request header.
+
+#### Response Body
+```json
+ {
+   "milestone": {
+                  "_id": "milestone_id",
+                  "name": "Join Gym", 
+                  "description": "Sign up for gym membership and trainer at a close gym", 
+                  "status": "in-progress",
+                  "userID": "user_id",
+                  "goalID": "goal_id"
+                }
+}
+```
+
+
+### Update Milestone
+**Endpoint:** `PUT /api/v1/goals/milestones/:milestone_id`  
+**Description:** Update a specific milestone.  
+
+🔒 **Protected Route** — Requires a valid JWT token in the request header.
+
+#### Request Body
+```json
+  {
+    "name": "Join Gym",
+    "description": "Sign up for gym membership and trainer at a close gym", 
+    "status": "in-progress",
+  }
+```
+
+#### Response Body
+```json
+{
+  "milestone": {
+                  "_id": "milestone_id",
+                  "name": "Join Gym", 
+                  "description": "Sign up for gym membership and trainer at a close gym", 
+                  "status": "in-progress",
+                  "userID": "user_id",
+                  "goalID": "goal_id"
+                }
+}
+```
+
+
+### Delete Milestone
+**Endpoint:** `DELETE /api/v1/goals/milestones/:milestone_id`  
+**Description:** Delete a specific user goal.  
+
+🔒 **Protected Route** — Requires a valid JWT token in the request header.
+
+#### Response Body
+```
+  status: 200,
+  message: "Deleted milestone successfully."
+```
+.  
+.  
+.  
+.  
+
+<h2 align="center">📬 Contact Me</h2>
+
+<p align="center">
+  <b>Have a startup idea, collab offer, or just want to say hey?</b><br />
+  I'm always open to great convos and bold opportunities.
+</p>
+
+<p align="center">
+  🔗 <a href="https://www.linkedin.com/in/mike-lead/">LinkedIn</a> &nbsp;|&nbsp;
+  🌐 <a href="https://thestartupdev.com">Website</a> &nbsp;|&nbsp;
+  📧 <a href="mailto:adesanya1ademola@gmail.com">adesanya1ademola@gmail.com</a>
+</p>
+
+<p align="center">
+  <i>Let’s build something legendary.</i> 🚀
+</p>
+
 
