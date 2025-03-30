@@ -4,8 +4,11 @@ A robust and secure RESTful API for managing personal goals and milestones. Desi
 
 This API provides user authentication, goal tracking, and milestone management — ideal for building goal-oriented productivity platforms or personal project management tools.
 
-🟢 **Live Demo:** [https://goals-api-q87s.onrender.com](https://goals-api-q87s.onrender.com)  
-📘 **To use the API, check the documentation below.**
+🌐 **Base URL**: [https://goals-api-q87s.onrender.com](https://goals-api-q87s.onrender.com)  
+📘 Append endpoint paths (like `/api/goals`) to access the API.  
+📘 **To use the API, check the documentation below.**  
+
+> 📖 Full Public Documentation - [Goals API Docs](https://github.com/techlead-1/goals-api-docs)  
 
 
 ### 🚀 Tech Stack
