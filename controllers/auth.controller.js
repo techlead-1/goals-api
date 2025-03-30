@@ -37,12 +37,14 @@ export const signUp = async (req, res, next) => {
             message: 'User created successfully.',
             data: {
                 token: token,
-                user: users[0].select('-password'),
+                user: users[0],
             }
         })
     } catch (e) {
-        await session.abortTransaction()
-        await session.endSession()
+        if (session && session.inTransaction()) {
+            await session.abortTransaction();
+            await session.endSession();
+        }
         next(e)
     }
 }

@@ -12,7 +12,7 @@ const authMiddleware = async (req, res, next) => {
 
         if (!token) {
             let error = new Error('No token provided');
-            error.status = 401;
+            error.statusCode = 401;
             throw error;
         }
 
@@ -20,7 +20,7 @@ const authMiddleware = async (req, res, next) => {
 
         if (!decodedToken) {
             let error = new Error('Invalid token')
-            error.status = 401;
+            error.statusCode = 401;
             throw error;
         }
 
@@ -28,7 +28,7 @@ const authMiddleware = async (req, res, next) => {
 
         if (!user) {
             let error = new Error('User not found');
-            error.status = 404;
+            error.statusCode = 404;
             throw error;
         }
 

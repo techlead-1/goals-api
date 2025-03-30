@@ -28,8 +28,10 @@ export const createMilestone = async (req, res, next) => {
             }
         })
     } catch (e) {
-        await session.abortTransaction()
-        await session.endSession()
+        if (session && session.inTransaction()) {
+            await session.abortTransaction();
+            await session.endSession();
+        }
         next(e);
     }
 }

@@ -11,10 +11,10 @@ const aj = arcjet({
             mode: "LIVE",
             allow: [
                 "CATEGORY:SEARCH_ENGINE",
-                "TOOL:POSTMAN",
-                "TOOL:CURL",
-                "CATEGORY:DEVELOPER", // general dev tools
-                "LIBRARY:FETCH" // modern fetch-based requests (like from frontend)
+                "POSTMAN",
+                "CURL",
+                "FETCH", // modern fetch-based requests (like from frontend)
+                "HTTP_CLIENT"
             ],        }),        tokenBucket({
             mode: "LIVE",
             refillRate: 5, // Refill 5 tokens per interval  
