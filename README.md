@@ -60,8 +60,11 @@ This API is live and stable. Ready for integration, testing, or further extensio
 
 ---
 
+## 📘 Documentation
 
-## 🔐 Authentication
+### 🔐 Authentication
+
+---
 
 ### Sign Up  
 **Endpoint:** `POST /api/v1/auth/sign-up`  
@@ -93,11 +96,11 @@ This API is live and stable. Ready for integration, testing, or further extensio
 ```
 
 ### Sign In  
+
 **Endpoint:** `PUT /api/v1/auth/sign-in`  
 **Description:** Authenticates a user and returns a JWT token.
 
 #### Request Body
-
 ```json
 {
   "email": "jane@example.com",
@@ -106,7 +109,6 @@ This API is live and stable. Ready for integration, testing, or further extensio
 ```
 
 #### Response Body
-
 ```json
 {
   "token": "jwt_token",
@@ -118,6 +120,7 @@ This API is live and stable. Ready for integration, testing, or further extensio
           }
 }
 ```
+
 ### Sign Out  
 **Endpoint:** `DELETE /api/v1/auth/sign-out`  
 **Description:** Logs the user out by invalidating the current session.  
@@ -133,6 +136,50 @@ This API is live and stable. Ready for integration, testing, or further extensio
   message: "User logged out successfully."
 ```
 
-## 🎯 Goals 
+### 👤 User Profile
 
-#### Create Goals
+--- 
+
+### View Profile
+**Endpoint:** `GET /api/v1/users/me`  
+**Description:** Gets the user profile.  
+
+🔒 **Protected Route** — Requires a valid JWT token in the request header.
+
+#### Response Body
+```json
+  {
+    "user": {
+              "id": "user_id",
+              "name": "Jane Doe",
+              "email": "jane@example.com",
+              "profession": "Software Engineer"
+            }
+  }
+```
+
+### Update Profile
+**Endpoint:** `PUT /api/v1/users/me`  
+**Description:** Updates the user profile, only name and profession can be updated.  
+
+🔒 **Protected Route** — Requires a valid JWT token in the request header.
+
+#### Request Body
+```json
+{
+  "name": "Jane Doe",
+  "profession": "Software Engineer"
+}
+```
+
+#### Response Body
+```json
+{
+  "user": {
+            "id": "user_id",
+            "name": "Jane Doe",
+            "email": "jane@example.com",
+            "profession": "Software Engineer"
+          }
+}
+```
