@@ -87,7 +87,7 @@ This API is live and stable. Ready for integration, testing, or further extensio
 {
   "token": "jwt_token",
   "user": {
-            "id": "user_id",
+            "_id": "user_id",
             "name": "Jane Doe",
             "email": "jane@example.com",
             "profession": "Software Engineer"
@@ -113,7 +113,7 @@ This API is live and stable. Ready for integration, testing, or further extensio
 {
   "token": "jwt_token",
   "user": {
-            "id": "user_id",
+            "_id": "user_id",
             "name": "Jane Doe",
             "email": "jane@example.com",
             "profession": "Software Engineer"
@@ -150,7 +150,7 @@ This API is live and stable. Ready for integration, testing, or further extensio
 ```json
   {
     "user": {
-              "id": "user_id",
+              "_id": "user_id",
               "name": "Jane Doe",
               "email": "jane@example.com",
               "profession": "Software Engineer"
@@ -160,7 +160,7 @@ This API is live and stable. Ready for integration, testing, or further extensio
 
 ### Update Profile
 **Endpoint:** `PUT /api/v1/users/me`  
-**Description:** Updates the user profile, only name and profession can be updated.  
+**Description:** Creates user goal.  
 
 🔒 **Protected Route** — Requires a valid JWT token in the request header.
 
@@ -176,10 +176,146 @@ This API is live and stable. Ready for integration, testing, or further extensio
 ```json
 {
   "user": {
-            "id": "user_id",
+            "_id": "user_id",
             "name": "Jane Doe",
             "email": "jane@example.com",
             "profession": "Software Engineer"
           }
 }
 ```
+
+## 🎯 Goals
+
+---
+
+### Create Goal
+**Endpoint:** `POST /api/v1/goals`  
+**Description:** Creates user goals auto associated with the user behind the scenes.  
+
+🔒 **Protected Route** — Requires a valid JWT token in the request header.
+
+#### Request Body
+```json
+  {
+    "name": "Lose 10kg", // Required, trimmed string
+    "category": "fitness", // Required, must be one of the enum values ['career', 'health', 'fitness', 'relationships', 'finance', 'travel', 'vacation', 'fun', 'business']
+    "description": "Personal fitness goal to lose weight and get in shape", // Optional, trimmed string
+    "start_date": "2025-04-01T00:00:00Z", // Optional, must be <= end_date if present
+    "end_date": "2025-06-30T00:00:00Z", // Optional, must be >= start_date if present
+    "status": "in-progress", // Required, must be one of ['in-progress', 'done', 'failed', 'archived'], default = 'in-progress'
+  }
+```
+
+#### Response Body
+```json
+ {
+   "goal": {
+              "_id": "goal_id",
+              "name": "Lose 10kg", 
+              "category": "fitness", 
+              "description": "Personal fitness goal to lose weight and get in shape",
+              "start_date": "2025-04-01T00:00:00Z", 
+              "end_date": "2025-06-30T00:00:00Z", 
+              "status": "in-progress", 
+              "userID": "66103ae82c9c0ad2cdaed442"
+            }
+}
+```
+
+
+### Get All Goals
+**Endpoint:** `GET /api/v1/goals`  
+**Description:** Get all user goals associated to this user, return an array of JSON.  
+
+🔒 **Protected Route** — Requires a valid JWT token in the request header.
+
+#### Response Body
+```json
+ {
+   "goals": [
+              {
+                "_id": "goal_id",
+                "name": "Lose 10kg", 
+                "category": "fitness", 
+                "description": "Personal fitness goal to lose weight and get in shape",
+                "start_date": "2025-04-01T00:00:00Z", 
+                "end_date": "2025-06-30T00:00:00Z", 
+                "status": "in-progress", 
+                "userID": "66103ae82c9c0ad2cdaed442"
+              }
+            ]
+}
+```
+
+
+### Get Specific Goal
+**Endpoint:** `GET /api/v1/goals/:goal_id`  
+**Description:** Get a specific user goal.  
+
+🔒 **Protected Route** — Requires a valid JWT token in the request header.
+
+#### Response Body
+```json
+ {
+   "goal": {
+              "_id": "goal_id",
+              "name": "Lose 10kg", 
+              "category": "fitness", 
+              "description": "Personal fitness goal to lose weight and get in shape",
+              "start_date": "2025-04-01T00:00:00Z", 
+              "end_date": "2025-06-30T00:00:00Z", 
+              "status": "in-progress", 
+              "userID": "66103ae82c9c0ad2cdaed442"
+            }
+}
+```
+
+
+### Update Goal
+**Endpoint:** `PUT /api/v1/goals/:goal_id`  
+**Description:** Update a specific user goal.  
+
+🔒 **Protected Route** — Requires a valid JWT token in the request header.
+
+#### Request Body
+```json
+  {
+    "name": "Lose 10kg",
+    "category": "fitness",
+    "description": "Personal fitness goal to lose weight and get in shape", 
+    "start_date": "2025-04-01T00:00:00Z", 
+    "end_date": "2025-06-30T00:00:00Z", 
+    "status": "in-progress", 
+  }
+```
+
+#### Response Body
+```json
+{
+  "goal": {
+            "_id": "goal_id",
+            "name": "Lose 10kg", 
+            "category": "fitness", 
+            "description": "Personal fitness goal to lose weight and get in shape",
+            "start_date": "2025-04-01T00:00:00Z", 
+            "end_date": "2025-06-30T00:00:00Z", 
+            "status": "in-progress", 
+            "userID": "66103ae82c9c0ad2cdaed442"
+          }
+}
+```
+
+
+### Delete Goal
+**Endpoint:** `DELETE /api/v1/goals/:goal_id`  
+**Description:** Delete a specific user goal.  
+
+🔒 **Protected Route** — Requires a valid JWT token in the request header.
+
+#### Response Body
+```
+  status: 200,
+  message: "Deleted goal successfully."
+```
+
+
