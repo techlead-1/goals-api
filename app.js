@@ -25,7 +25,7 @@ app.use('/api/v1/goals', authMiddleware, milestoneRouter);
 app.set('trust proxy', true);
 
 app.get('/', (req, res) => {
-    res.send('Welcome to the goals API')
+    res.redirect('https://github.com/techlead-1/goals-api-docs')
 })
 
 app.use((req, res, next) => {
