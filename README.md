@@ -7,9 +7,8 @@ This API provides user authentication, goal tracking, and milestone management �
 🟢 **Live Demo:** [https://goals-api-q87s.onrender.com](https://goals-api-q87s.onrender.com)  
 📘 **To use the API, check the documentation below.**
 
----
 
-## 🚀 Tech Stack
+### 🚀 Tech Stack
 
 Built using modern backend tools and libraries:
 
@@ -20,32 +19,30 @@ Built using modern backend tools and libraries:
 - **JWT** – JSON Web Tokens for stateless authentication and route protection
 - **Bcrypt** – Secure password hashing and storage
 
----
 
-## ✨ Features
+### ✨ Features
 
-### 👤 User Management
+#### 👤 User Management
 - Register a new user profile
 - Log in securely with JWT
 - View and update your profile
 - Passwords hashed with bcrypt for security
 
-### 🔐 Authentication & Security
+#### 🔐 Authentication & Security
 - **JWT-based Authentication** for protected routes
 - **Authorization Middleware** to control access
 - **Rate Limiting & Bot Protection** powered by Arcjet
 
-### 🎯 Goals
+#### 🎯 Goals
 - Create, read, update, and delete personal goals
 - Organize progress into milestones
 
-### 🏁 Milestones
+#### 🏁 Milestones
 - Add and manage milestones for each goal
 - Nested CRUD operations within goal context
 
----
 
-## 📦 Use Case
+### 📦 Use Case
 
 This API is suitable for:
 - Productivity apps
@@ -55,9 +52,8 @@ This API is suitable for:
 
 Designed to be lightweight yet extensible — a solid foundation for real-world backend systems.
 
----
 
-## 📄 Status
+### 📄 Status
 
 ✅ **Project Completed**  
 This API is live and stable. Ready for integration, testing, or further extension.
@@ -136,3 +132,7 @@ This API is live and stable. Ready for integration, testing, or further extensio
   status: 200,
   message: "User logged out successfully."
 ```
+
+## 🎯 Goals 
+
+#### Create Goals
