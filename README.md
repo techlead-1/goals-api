@@ -438,6 +438,40 @@ This API is live and stable. Ready for integration, testing, or further extensio
   status: 200,
   message: "Deleted milestone successfully."
 ```
+
+## 🛠️ Run Locally
+
+1. Clone the project:
+
+```bash
+git clone https://github.com/techlead-1/goals-api.git
+cd goals-api
+```
+
+2. Create a `.env.development.local` file in the root folder
+3. Add the following environment variables:
+```
+# NODE ENV
+NODE_ENV = 'development'
+
+# PORT
+PORT = 5500
+
+# DATABASE SETTINGS
+DB_URI = "xxx"
+
+# JWT AUTHENTICATION
+JWT_SECRET = "xxx"
+JWT_EXPIRE_IN = "10 days"
+
+# ARCJET
+ARCJET_KEY = "xxx"
+ARCJET_ENV = 'development'
+```
+4. Start the application
+```bash
+npm run dev
+```
 .  
 .  
 .  
